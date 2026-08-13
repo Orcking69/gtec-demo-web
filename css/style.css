@@ -1,11 +1,11 @@
 /* ==========================================================================
-   GTEC — Gopalganj Textile Engineering College (demo)
-   Design language: warp & weft. The institution teaches textiles, so the
-   site borrows its structure from cloth — selvedge double-rules instead of
-   drop shadows, a woven grid instead of a hero gradient, thread-colour
-   accents (indigo dye / madder red / turmeric) instead of a single brand
-   blue. Nothing here is a real photo; the loom pattern is the signature.
-   ========================================================================== */
+ *  GTEC — Gopalganj Textile Engineering College (demo)
+ *  Design language: warp & weft. The institution teaches textiles, so the
+ *  site borrows its structure from cloth — selvedge double-rules instead of
+ *  drop shadows, a woven grid instead of a hero gradient, thread-colour
+ *  accents (indigo dye / madder red / turmeric) instead of a single brand
+ *  blue. Nothing here is a real photo; the loom pattern is the signature.
+ *  ========================================================================== */
 
 :root {
   /* -- palette: dye vat + unbleached cotton -- */
@@ -122,8 +122,41 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
 }
 
 /* ==========================================================================
-   Header / nav
-   ========================================================================== */
+ *  Utility bar (slim strip above the header, CUET-style)
+ *  ========================================================================== */
+
+.utility-bar {
+  background: var(--color-indigo);
+  color: #cfd3df;
+  font-size: 0.76rem;
+}
+.utility-bar .shell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.utility-links {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.utility-links a {
+  color: #cfd3df;
+  text-decoration: none;
+}
+.utility-links a:hover { color: var(--color-turmeric); }
+@media (max-width: 700px) {
+  .utility-bar .utility-links.utility-secondary { display: none; }
+}
+
+/* ==========================================================================
+ *  Header / nav
+ *  ========================================================================== */
 
 .site-header {
   background: var(--color-surface);
@@ -203,6 +236,57 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
 .main-nav a[aria-current="page"] { color: var(--color-indigo); font-weight: 600; }
 .main-nav a[aria-current="page"]::after { transform: scaleX(1); background: var(--color-indigo); }
 
+/* dropdown items — "Academic", "Notices" etc, CUET-style hover reveal */
+.nav-item { position: relative; display: flex; align-items: center; }
+.nav-caret {
+  background: none;
+  border: none;
+  color: var(--color-thread);
+  font-size: 0.65rem;
+  padding: 4px 8px 4px 0;
+  cursor: pointer;
+  margin-left: -6px;
+}
+.nav-caret:hover { color: var(--color-indigo); }
+.nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-m);
+  box-shadow: 0 12px 28px rgba(28, 44, 76, 0.14);
+  padding: 8px;
+  display: none;
+  z-index: 60;
+}
+.nav-item:hover .nav-dropdown,
+.nav-item:focus-within .nav-dropdown { display: block; }
+.nav-dropdown a {
+  display: block;
+  padding: 9px 12px;
+  font-size: 0.88rem;
+  color: var(--color-ink-soft);
+  border-radius: var(--radius-s);
+}
+.nav-dropdown a::after { display: none; }
+.nav-dropdown a:hover { background: var(--color-bg-warm); color: var(--color-indigo); }
+
+@media (max-width: 880px) {
+  .nav-item { flex-wrap: wrap; }
+  .nav-dropdown {
+    position: static;
+    display: none;
+    border: none;
+    box-shadow: none;
+    padding: 0 0 0 12px;
+    width: 100%;
+    order: 3;
+  }
+  .nav-item.is-open .nav-dropdown { display: block; }
+}
+
 .nav-actions { display: flex; align-items: center; gap: 8px; }
 
 .nav-toggle {
@@ -245,8 +329,79 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
 }
 
 /* ==========================================================================
-   Buttons
-   ========================================================================== */
+ *  Quick-access strip (icon row directly under the hero, CUET-style)
+ *  ========================================================================== */
+
+.quick-strip {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-line);
+}
+.quick-strip-inner {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--color-line);
+}
+.quick-strip-item {
+  background: var(--color-surface);
+  text-decoration: none;
+  color: var(--color-ink);
+  padding: 18px 14px;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.quick-strip-item:hover { background: var(--color-bg-warm); color: var(--color-indigo); }
+.quick-strip-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--color-rust);
+}
+@media (max-width: 780px) {
+  .quick-strip-inner { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ==========================================================================
+ *  Stats counter row ("at a glance", CUET-style)
+ *  ========================================================================== */
+
+.stats-row {
+  background: var(--color-indigo);
+  color: #f2efe6;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 40px 24px;
+  text-align: center;
+}
+@media (max-width: 700px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.stat-block .stat-figure {
+  font-family: var(--font-display);
+  font-size: var(--step-3);
+  color: var(--color-turmeric);
+  display: block;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-block .stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #cfd3df;
+}
+
+/* ==========================================================================
+ *  Buttons
+ *  ========================================================================== */
 
 .btn {
   display: inline-flex;
@@ -273,8 +428,8 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
 .btn-sm { padding: 6px 14px; font-size: 0.82rem; }
 
 /* ==========================================================================
-   Hero (loom grid)
-   ========================================================================== */
+ *  Hero (loom grid)
+ *  ========================================================================== */
 
 .hero {
   position: relative;
@@ -288,8 +443,8 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
   inset: 0;
   opacity: 0.16;
   background-image:
-    repeating-linear-gradient(90deg, rgba(255,255,255,0.55) 0 1px, transparent 1px 34px),
-    repeating-linear-gradient(0deg, rgba(255,255,255,0.4) 0 1px, transparent 1px 34px);
+  repeating-linear-gradient(90deg, rgba(255,255,255,0.55) 0 1px, transparent 1px 34px),
+  repeating-linear-gradient(0deg, rgba(255,255,255,0.4) 0 1px, transparent 1px 34px);
   mask-image: radial-gradient(ellipse 90% 100% at 70% 20%, black 40%, transparent 85%);
 }
 .hero-inner {
@@ -336,8 +491,8 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
 .thread-stat-row strong { color: #fff; font-family: var(--font-mono); }
 
 /* ==========================================================================
-   Sections / cards
-   ========================================================================== */
+ *  Sections / cards
+ *  ========================================================================== */
 
 .section { padding: 64px 0; }
 .section-tight { padding: 40px 0; }
@@ -415,8 +570,8 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
 .people-role { font-size: 0.85rem; color: var(--color-thread); font-family: var(--font-mono); }
 
 /* ==========================================================================
-   Notices
-   ========================================================================== */
+ *  Notices
+ *  ========================================================================== */
 
 .notice-list { display: flex; flex-direction: column; }
 .notice-row {
@@ -452,8 +607,8 @@ p { margin: 0 0 1em; color: var(--color-ink-soft); }
 .tag-exam { color: var(--color-rust); }
 
 /* ==========================================================================
-   Tables
-   ========================================================================== */
+ *  Tables
+ *  ========================================================================== */
 
 .table-wrap { overflow-x: auto; border: 1px solid var(--color-line); border-radius: var(--radius-m); }
 table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: var(--color-surface); }
@@ -470,8 +625,8 @@ tbody tr:last-child td { border-bottom: none; }
 tbody tr:hover { background: var(--color-bg-warm); }
 
 /* ==========================================================================
-   Banners
-   ========================================================================== */
+ *  Banners
+ *  ========================================================================== */
 
 .banner {
   border-radius: var(--radius-m);
@@ -500,8 +655,8 @@ tbody tr:hover { background: var(--color-bg-warm); }
 }
 
 /* ==========================================================================
-   Forms
-   ========================================================================== */
+ *  Forms
+ *  ========================================================================== */
 
 .form-field { margin-bottom: 18px; }
 .form-field label {
@@ -553,8 +708,8 @@ textarea { resize: vertical; min-height: 110px; }
 .form-error.is-visible { display: block; }
 
 /* ==========================================================================
-   Dashboards
-   ========================================================================== */
+ *  Dashboards
+ *  ========================================================================== */
 
 .dash-header {
   display: flex;
@@ -571,8 +726,8 @@ textarea { resize: vertical; min-height: 110px; }
 }
 
 /* ==========================================================================
-   Footer
-   ========================================================================== */
+ *  Footer
+ *  ========================================================================== */
 
 .site-footer {
   background: var(--color-indigo);
@@ -580,22 +735,38 @@ textarea { resize: vertical; min-height: 110px; }
   margin-top: 64px;
 }
 .footer-inner {
-  padding: 48px 24px 28px;
+  padding: 48px 24px 20px;
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr 1fr;
-  gap: 32px;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 28px;
 }
-@media (max-width: 780px) {
-  .footer-inner { grid-template-columns: 1fr 1fr; }
+@media (max-width: 980px) {
+  .footer-inner { grid-template-columns: repeat(3, 1fr); }
 }
-@media (max-width: 480px) {
-  .footer-inner { grid-template-columns: 1fr; }
+@media (max-width: 620px) {
+  .footer-inner { grid-template-columns: repeat(2, 1fr); }
 }
-.footer-inner h4 { color: #fff; font-size: 0.85rem; font-family: var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px; }
+.footer-inner h4 { color: #fff; font-size: 0.8rem; font-family: var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px; }
 .footer-inner p { color: #b7bcce; font-size: 0.86rem; }
 .footer-inner ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-.footer-inner a { color: #cfd3df; font-size: 0.86rem; text-decoration: none; }
+.footer-inner a { color: #cfd3df; font-size: 0.84rem; text-decoration: none; }
 .footer-inner a:hover { color: var(--color-turmeric); }
+
+.footer-identity {
+  border-top: 1px solid rgba(255,255,255,0.14);
+  padding: 24px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.footer-identity-brand { display: flex; align-items: center; gap: 12px; }
+.footer-identity-brand .brand-name { color: #fff; font-family: var(--font-display); font-size: 1.05rem; }
+.footer-identity-meta { display: flex; flex-direction: column; gap: 4px; font-size: 0.82rem; color: #b7bcce; }
+.footer-identity-meta a { color: #b7bcce; text-decoration: none; }
+.footer-identity-meta a:hover { color: var(--color-turmeric); }
+
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.14);
   padding: 16px 24px 24px;
@@ -608,8 +779,8 @@ textarea { resize: vertical; min-height: 110px; }
 }
 
 /* ==========================================================================
-   Utility
-   ========================================================================== */
+ *  Utility
+ *  ========================================================================== */
 
 .mt-0 { margin-top: 0; }
 .text-center { text-align: center; }
