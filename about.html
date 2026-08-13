@@ -12,6 +12,18 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <div class="utility-bar">
+    <div class="shell">
+      <ul class="utility-links">
+        <li><a href="mailto:info@gtec.ac.bd">info@gtec.ac.bd <span class="muted" style="color:#9099b4;font-size:0.7rem;">(sample)</span></a></li>
+      </ul>
+      <ul class="utility-links utility-secondary">
+        <li><a href="student-login.html">Student Portal</a></li>
+        <li><a href="teacher-login.html">Teacher Portal</a></li>
+        <li><a href="notices.html">Notices</a></li>
+      </ul>
+    </div>
+  </div>
   <header class="site-header">
     <div class="header-bar shell">
       <a class="brand" href="index.html">
@@ -23,17 +35,37 @@
       </a>
       <nav class="main-nav" aria-label="Primary">
       <a href="index.html">Home</a>
-      <a href="about.html" aria-current="page">About</a>
-      <a href="academics.html">Academics</a>
-      <a href="admissions.html">Admissions</a>
-      <a href="notices.html">Notices</a>
-      <a href="results.html">Results</a>
+      <div class="nav-item">
+        <a href="about.html" aria-current="page">About</a>
+        <button class="nav-caret" type="button" aria-label="Show About submenu" aria-expanded="false">&#9662;</button>
+        <div class="nav-dropdown">
+          <a href="about.html">About GTEC</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="academics.html">Academic</a>
+        <button class="nav-caret" type="button" aria-label="Show Academic submenu" aria-expanded="false">&#9662;</button>
+        <div class="nav-dropdown">
+          <a href="academics.html">Departments</a>
+          <a href="academics.html">Faculty</a>
+          <a href="results.html">Results</a>
+        </div>
+      </div>
+      <a href="admissions.html">Admission</a>
+      <div class="nav-item">
+        <a href="notices.html">Notices</a>
+        <button class="nav-caret" type="button" aria-label="Show Notices submenu" aria-expanded="false">&#9662;</button>
+        <div class="nav-dropdown">
+          <a href="notices.html">All Notices</a>
+          <a href="resources.html">Downloads</a>
+        </div>
+      </div>
       <a href="resources.html">Resources</a>
       <a href="contact.html">Contact</a>
       </nav>
       <div class="nav-actions">
-        <a class="btn btn-outline btn-sm" href="student-login.html">Student login</a>
-        <a class="btn btn-primary btn-sm" href="teacher-login.html">Teacher login</a>
+        <a class="btn btn-rust btn-sm" href="admissions.html">Admission</a>
         <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
           <span></span>
         </button>
@@ -106,40 +138,69 @@
   <footer class="site-footer">
     <div class="footer-inner shell">
       <div>
-        <h4>GTEC</h4>
-        <p>Gopalganj Textile Engineering College offers a direct four-year BSc in Textile Engineering, academically affiliated with the Bangladesh University of Textiles (BUTEX).</p>
-        <p class="muted" style="font-size:0.78rem;">This is a prototype site built to demonstrate a possible official web presence. It is not the live GTEC site.</p>
+        <h4>Academic</h4>
+        <ul>
+          <li><a href="academics.html">Departments</a></li>
+          <li><a href="academics.html">Faculty</a></li>
+          <li><a href="results.html">Results</a></li>
+          <li><a href="resources.html">Academic Calendar</a></li>
+        </ul>
       </div>
       <div>
-        <h4>Explore</h4>
+        <h4>Admission</h4>
         <ul>
-          <li><a href="about.html">About GTEC</a></li>
-          <li><a href="academics.html">Academics</a></li>
-          <li><a href="admissions.html">Admissions</a></li>
-          <li><a href="notices.html">Notices</a></li>
+          <li><a href="admissions.html">Undergraduate Admission</a></li>
+          <li><a href="admissions.html">Eligibility &amp; Fees</a></li>
+          <li><a href="resources.html">Application Form</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Notices</h4>
+        <ul>
+          <li><a href="notices.html">All Notices</a></li>
+          <li><a href="notices.html">Academic Notices</a></li>
+          <li><a href="notices.html">Exam Notices</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="resources.html">Downloads</a></li>
+          <li><a href="results.html">Results</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
         </ul>
       </div>
       <div>
         <h4>Portals</h4>
         <ul>
-          <li><a href="student-login.html">Student login</a></li>
-          <li><a href="teacher-login.html">Teacher login</a></li>
-          <li><a href="results.html">Results</a></li>
-          <li><a href="resources.html">Resources</a></li>
+          <li><a href="student-login.html">Student Login</a></li>
+          <li><a href="teacher-login.html">Teacher Login</a></li>
         </ul>
       </div>
       <div>
-        <h4>Contact</h4>
+        <h4>About</h4>
         <ul>
-          <li>Gopalganj Sadar, Gopalganj&nbsp;8100, Bangladesh</li>
-          <li>+880&nbsp;2-XXXX-XXXX <span class="muted" style="font-size:0.75rem;">(sample)</span></li>
-          <li>info@gtec.ac.bd <span class="muted" style="font-size:0.75rem;">(sample)</span></li>
+          <li><a href="about.html">About GTEC</a></li>
+          <li><a href="about.html">BUTEX Affiliation</a></li>
+          <li><a href="contact.html">Campus Location</a></li>
         </ul>
       </div>
     </div>
+
+    <div class="footer-identity shell">
+      <div class="footer-identity-brand">
+        <img class="brand-mark" src="images/logo.svg" alt="" width="38" height="38">
+        <span class="brand-name">Gopalganj Textile Engineering College</span>
+      </div>
+      <div class="footer-identity-meta">
+        <span>Gopalganj Sadar, Gopalganj&nbsp;8100, Bangladesh <span class="muted" style="font-size:0.75rem;">(sample)</span></span>
+        <span><a href="mailto:info@gtec.ac.bd">info@gtec.ac.bd</a> &middot; <a href="tel:+8802XXXXXXX">+880&nbsp;2-XXXX-XXXX</a> <span class="muted" style="font-size:0.75rem;">(sample)</span></span>
+      </div>
+    </div>
+
     <div class="footer-bottom shell">
       <span>&copy; 2026 Gopalganj Textile Engineering College — prototype site, not an official page.</span>
-      <span>Affiliated with BUTEX</span>
+      <span>Academically affiliated with BUTEX</span>
     </div>
   </footer>
 
