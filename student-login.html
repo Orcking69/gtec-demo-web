@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student login · GTEC (Demo)</title>
+  <meta name="description" content="Demo login page for the GTEC student portal prototype.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-bar shell">
+      <a class="brand" href="index.html">
+        <img class="brand-mark" src="images/logo.svg" alt="" width="42" height="42">
+        <span class="brand-text">
+          <span class="brand-name">GTEC</span>
+          <span class="brand-sub">Gopalganj Textile Engineering College</span>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="academics.html">Academics</a>
+      <a href="admissions.html">Admissions</a>
+      <a href="notices.html">Notices</a>
+      <a href="results.html">Results</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-outline btn-sm" href="student-login.html">Student login</a>
+        <a class="btn btn-primary btn-sm" href="teacher-login.html">Teacher login</a>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="auth-shell">
+    <div class="banner banner-info" style="margin-bottom:22px;">
+      <strong style="margin:0;">&#9432;</strong>
+      <div>
+        <strong>Demo login</strong>
+        Use username: <strong>student</strong> &nbsp;/&nbsp; password: <strong>demo123</strong>
+      </div>
+    </div>
+
+    <div class="auth-card">
+      <span class="eyebrow">Student portal</span>
+      <h2 style="margin-bottom:6px;">Student login</h2>
+      <p class="muted" style="margin-bottom:22px;">Sign in to view a sample student dashboard. This is a
+      UI simulation — no real accounts exist.</p>
+
+      <div class="form-error" role="alert"></div>
+
+      <form id="student-login-form">
+        <div class="form-field">
+          <label for="student-username">Username</label>
+          <input type="text" id="student-username" name="username" autocomplete="username" value="student">
+        </div>
+        <div class="form-field">
+          <label for="student-password">Password</label>
+          <input type="password" id="student-password" name="password" autocomplete="current-password" value="demo123">
+        </div>
+        <button class="btn btn-primary" type="submit" style="width:100%; justify-content:center;">Log in</button>
+      </form>
+
+      <p style="margin-top:18px; text-align:center; font-size:0.85rem;">
+        Looking for the teacher login instead? <a href="teacher-login.html">Go there</a>
+      </p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner shell">
+      <div>
+        <h4>GTEC</h4>
+        <p>Gopalganj Textile Engineering College is affiliated with the Bangladesh University of Textiles (BUTEX), offering diploma-to-degree pathways in textile and fashion engineering.</p>
+        <p class="muted" style="font-size:0.78rem;">This is a prototype site built to demonstrate a possible official web presence. It is not the live GTEC site.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="about.html">About GTEC</a></li>
+          <li><a href="academics.html">Academics</a></li>
+          <li><a href="admissions.html">Admissions</a></li>
+          <li><a href="notices.html">Notices</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Portals</h4>
+        <ul>
+          <li><a href="student-login.html">Student login</a></li>
+          <li><a href="teacher-login.html">Teacher login</a></li>
+          <li><a href="results.html">Results</a></li>
+          <li><a href="resources.html">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Gopalganj Sadar, Gopalganj&nbsp;8100, Bangladesh</li>
+          <li>+880&nbsp;2-XXXX-XXXX <span class="muted" style="font-size:0.75rem;">(sample)</span></li>
+          <li>info@gtec.ac.bd <span class="muted" style="font-size:0.75rem;">(sample)</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom shell">
+      <span>&copy; 2026 Gopalganj Textile Engineering College — prototype site, not an official page.</span>
+      <span>Affiliated with BUTEX</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth-demo.js"></script>
+  <script>
+    gtecAuth.wireLoginForm("#student-login-form", "student", "student-login.html", "student-dashboard.html");
+  </script>
+</body>
+</html>
