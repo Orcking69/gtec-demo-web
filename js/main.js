@@ -13,6 +13,16 @@
     toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
   });
 
+  // Dropdown items ("Academic", "Notices") — the caret button expands the
+  // submenu on tap/click without navigating away from the parent link.
+  nav.querySelectorAll(".nav-caret").forEach(function (caret) {
+    caret.addEventListener("click", function () {
+      var item = caret.closest(".nav-item");
+      var isOpen = item.classList.toggle("is-open");
+      caret.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+
   // Close the mobile menu after a nav link is tapped.
   nav.querySelectorAll("a").forEach(function (link) {
     link.addEventListener("click", function () {
